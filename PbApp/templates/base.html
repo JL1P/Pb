@@ -13,7 +13,7 @@
 
 <style>
     body{
-        background-image: url({% static 'img\3.png' %});
+        background-image: url({% static 'img\fondo.png' %});
         background-attachment: fixed;
         background-size: cover;
     }
@@ -50,7 +50,7 @@
         <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown">
                 <a style="color: aliceblue;" class="nav-link dropdown-toggle" data-toggle='dropdown' href="{% url 'rel_trgtas_vendidas' %}">RELACION DE TARJETAS VENDIDAS</a>
-                <div class="dropdown-menu dropdown-menu-right" style="background-color: rgba(217, 217, 217, 0.1);">
+                <div class="dropdown-menu dropdown-menu-right" style="background-color: rgba(52, 58, 64, 0.9);">
                     <a style="color: aliceblue;" class="dropdown-item" href="{% url 'rel_trgtas_vendidas_cup' %}">CUP</a>
                     <a style="color: aliceblue;" class="dropdown-item" href="{% url 'rel_trgtas_vendidas_nauta' %}">NAUTA</a>
                     <a style="color: aliceblue;" class="dropdown-item" href="{% url 'rel_trgtas_vendidas_movil' %}">MÓVIL</a>
@@ -58,14 +58,14 @@
             </li>
             <li class="nav-item dropdown">
                 <a style="color: aliceblue;" class="nav-link dropdown-toggle" data-toggle='dropdown' href="{% url 'facturaciones' %}">FACTURACIONES</a>
-                <div class='dropdown-menu dropdown-menu-right' style="background-color: rgba(217, 217, 217, 0.1);">
+                <div class='dropdown-menu dropdown-menu-right' style="background-color:  rgba(52, 58, 64, 0.9);">
                     <a style="color: aliceblue;" class='dropdown-item' href="{% url 'facturaciones_cup' %}">CUP</a>
                     <a style="color: aliceblue;" class='dropdown-item' href="{% url 'facturaciones_cuc' %}">CUC</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
                 <a style="color: aliceblue;" class="nav-link dropdown-toggle" data-toggle="dropdown" href="{% url 'extras' %}">EXTRAS</a>
-                <div class="dropdown-menu dropdown-menu-right" style="background-color: rgba(217, 217, 217, 0.1);">
+                <div class="dropdown-menu dropdown-menu-right" style="background-color: rgba(52, 58, 64, 0.9);">
                     <a style="color: aliceblue;" class="dropdown-item" href="{% url 'extras_arqueo' %}">ARQUEO</a>
                     <a style="color: aliceblue;" class="dropdown-item" href="{% url 'ap' %}">AP</a>
                     <a style="color: aliceblue;" class="dropdown-item" href="{% url 'prestamistas' %}">PRESTAMISTAS</a>
@@ -93,6 +93,8 @@
 
 
 <!--Footer-->
+
+
 
 </body>
 </html>

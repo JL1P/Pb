@@ -1,4 +1,8 @@
 from django.shortcuts import render
+import datetime
+from PbApp.models import rtv_cup, rtv_movil, rtv_nauta 
+from PbApp.forms import form_insert_cup
+from django.contrib.admin import widgets
 
 def home(request):
     return render(request, "home.html")
@@ -6,8 +10,26 @@ def home(request):
 def rel_trgtas_vendidas(request):
     return render(request, 'rel_trgtas_vendidas.html')
 
+def menu_rtv_cup(request):
+    return render(request, 'menu_rtv_cup.html')
+
+def insert_rtv_cup(request):
+    alert=False
+    if request.method=='POST':
+        miFormulario=form_insert_cup(request.POST)
+        if miFormulario.is_valid():
+            infForm=miFormulario.cleaned_data
+            x=rtv_cup.objects.create(fecha=infForm['fecha'], cant=infForm['cant'], valor_facial=infForm['valor_facial'], valor_etecsa=infForm['valor_etecsa'], ingreso_ag=infForm['ingreso_ag'])
+            alert=True
+    else:
+        miFormulario=form_insert_cup()
+    return render(request, 'insert_rtv_cup.html', {'form':miFormulario, 'alert':alert})
+
 def rel_trgtas_vendidas_cup(request):
-    return render(request, 'rel_trgtas_vendidas_cup.html')
+    x=datetime.datetime.now()
+    meses=['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+    mes=meses[x.month-1]
+    return render(request, 'rel_trgtas_vendidas_cup.html', {'month':mes})
 
 def rel_trgtas_vendidas_nauta(request):
     return render(request, 'rel_trgtas_vendidas_nauta.html')
