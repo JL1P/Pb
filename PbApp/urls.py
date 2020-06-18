@@ -8,6 +8,7 @@ urlpatterns = [
     path('rel_trgtas_vendidas_nauta/', views.rel_trgtas_vendidas_nauta, name='rel_trgtas_vendidas_nauta'),
     path('rel_trgtas_vendidas_movil/', views.rel_trgtas_vendidas_movil, name='rel_trgtas_vendidas_movil'),
     path("menu_rtv_cup/", views.menu_rtv_cup, name="menu_rtv_cup"),
+    path('menu_enero/', views.rel_trgtas_vendidas_cup, name='menu_enero'),
     path("insert_rtv_cup/", views.insert_rtv_cup, name="insert_rtv_cup"),
     path('facturaciones/', views.facturaciones, name='facturaciones'),
     path('facturaciones_cup/', views.facturaciones_cup, name='facturaciones_cup'),

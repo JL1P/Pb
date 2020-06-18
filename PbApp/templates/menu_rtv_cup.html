@@ -3,16 +3,96 @@
 
 <!--body-->
 {% block content %}
-<div class="container">
-  <div class="card" style="width:400px">
-    <img class="card-img-top" src="" alt="Card image" style="width:100%">
+<style>
+  .card{
+    display: inline-block;
+  }
+</style>
+<div class="container mx-auto">
+  <div class="card" style="width: 240px; margin: 15px">
+    <img class="card-img-top" src="{% static 'img/cards/enero.jpg' %}" alt="Card image" style="width:100%">
     <div class="card-body">
-      <h4 class="card-title">John Doe</h4>
-      <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-      <a href="#" class="btn btn-primary stretched-link">See Profile</a>
+      <h4 class="card-title">Enero</h4>
+      <a href="{% url 'menu_enero'  %}" class="btn btn-primary stretched-link">Ir</a>
+    </div>
+  </div>
+ <div class="card" style="width: 240px; margin: 15px">
+    <img class="card-img-top" src="{% static 'img/cards/febrero.jpg' %}" alt="Card image" style="width:100%">
+    <div class="card-body">
+      <h4 class="card-title">Febrero</h4>
+      <a href="#" class="btn btn-primary stretched-link">Ir</a>
+    </div>
+  </div>
+ <div class="card" style="width: 240px; margin: 15px">
+    <img class="card-img-top" src="{% static 'img/cards/marzo.jpg' %}" alt="Card image" style="width:100%">
+    <div class="card-body">
+      <h4 class="card-title">Marzo</h4>
+      <a href="#" class="btn btn-primary stretched-link">Ir</a>
+    </div>
+  </div>
+ <div class="card" style="width: 240px; margin: 15px">
+    <img class="card-img-top" src="{% static 'img/cards/abril.jpg' %}" alt="Card image" style="width:100%">
+    <div class="card-body">
+      <h4 class="card-title">Abril</h4>
+      <a href="#" class="btn btn-primary stretched-link">Ir</a>
+    </div>
+  </div>
+ <div class="card" style="width: 240px; margin: 15px">
+    <img class="card-img-top" src="{% static 'img/cards/mayo.jpg' %}" alt="Card image" style="width:100%">
+    <div class="card-body">
+      <h4 class="card-title">Mayo</h4>
+      <a href="#" class="btn btn-primary stretched-link">Ir</a>
+    </div>
+  </div>
+ <div class="card" style="width: 240px; margin: 15px">
+    <img class="card-img-top" src="{% static 'img/cards/junio.jpg' %}" alt="Card image" style="width:100%">
+    <div class="card-body">
+      <h4 class="card-title">Junio</h4>
+      <a href="#" class="btn btn-primary stretched-link">Ir</a>
+    </div>
+  </div>
+ <div class="card" style="width: 240px; margin: 15px">
+    <img class="card-img-top" src="{% static 'img/cards/julio.jpg' %}" alt="Card image" style="width:100%">
+    <div class="card-body">
+      <h4 class="card-title">Julio</h4>
+      <a href="#" class="btn btn-primary stretched-link">Ir</a>
+    </div>
+  </div>
+ <div class="card" style="width: 240px; margin: 15px">
+    <img class="card-img-top" src="{% static 'img/cards/agosto.jpg' %}" alt="Card image" style="width:100%">
+    <div class="card-body">
+      <h4 class="card-title">Agosto</h4>
+      <a href="#" class="btn btn-primary stretched-link">Ir</a>
+    </div>
+  </div>
+ <div class="card" style="width: 240px; margin: 15px">
+    <img class="card-img-top" src="{% static 'img/cards/septiembre.jpg' %}" alt="Card image" style="width:100%">
+    <div class="card-body">
+      <h4 class="card-title">Septiembre</h4>
+      <a href="#" class="btn btn-primary stretched-link">Ir</a>
+    </div>
+  </div>
+ <div class="card" style="width: 240px; margin: 15px">
+    <img class="card-img-top" src="{% static 'img/cards/octubre.jpg' %}" alt="Card image" style="width:100%">
+    <div class="card-body">
+      <h4 class="card-title">Octubre</h4>
+      <a href="#" class="btn btn-primary stretched-link">Ir</a>
+    </div>
+  </div>
+ <div class="card" style="width: 240px; margin: 15px">
+    <img class="card-img-top" src="{% static 'img/cards/noviembre.jpg' %}" alt="Card image" style="width:100%">
+    <div class="card-body">
+      <h4 class="card-title">Noviembre</h4>
+      <a href="#" class="btn btn-primary stretched-link">Ir</a>
+    </div>
+  </div>
+ <div class="card" style="width:240px; margin: 15px">
+    <img class="card-img-top" src="{% static 'img/cards/diciembre.jpg' %}" alt="Card image" style="width:100%">
+    <div class="card-body">
+      <h4 class="card-title">Diciembre</h4>
+      <a href="#" class="btn btn-primary stretched-link">Ir</a>
     </div>
   </div>
 </div>
-
 
 {% endblock content %}
