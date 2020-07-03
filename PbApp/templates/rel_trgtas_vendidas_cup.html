@@ -9,8 +9,7 @@
 }
 </style>
 <div class="container">
-    <h1 style="color: aliceblue; text-align: center;">{{month}}</h1>
-    <p>{{document}}</p>
+    <h1 style="color: aliceblue; text-align: center;">{{month}}-CUP</h1>
     {% if result %}
     <table class="table table-light table-hover table-striped">
         <thead class="thead-dark">
@@ -26,7 +25,7 @@
         {% for x in result %}
         <tr>
             <td>{{x.fecha}}</td>
-            <td>{{x.cant}}</td>
+            <td><strong>V</strong>:{{x.cant_c}} <strong>X</strong>:{{x.cant_d}} <strong>XX:</strong>{{x.cant_v}}</td>
             <td>{{x.valor_facial}}</td>
             <td>{{x.valor_etecsa}}</td>
             <td>{{x.ingreso_ag}}</td>
@@ -37,7 +36,7 @@
             <tr>
                 <th>Total</th>
         {% for x in tresult %}
-                <th>{{x.tcant}}</th>
+                <th><strong>V</strong>:{{x.tcant_c}} <strong>X</strong>:{{x.tcant_d}} <strong>XX:</strong>{{x.tcant_v}}</th>
                 <th>{{x.tvalor_facial}}</th>
                 <th>{{x.tvalor_etecsa}}</th>
                 <th>{{x.tingreso_ag}}</th>
@@ -50,9 +49,10 @@
         <p style="color: aliceblue">No hay datos de este mes</p>
     {% endif %}
 </div>
-<div style="text-align: center;">
-    <a href="{% url 'insert_rtv_cup' %}" class="btn btn-info btn-light" role="button" title="Insertar nuevos datos">Insertar</a>
-    <a href="{% url 'menu_rtv_cup' %}" class="btn btn-info btn-light" role="button" title="Ir a otro mes">Cambiar</a>
+<div class="d-flex justify-content-around">
+    <a href="{% url 'insert_rtc' %}" class="btn btn-info btn-light" role="button" title="Insertar nuevos datos">Insertar</a>
+    <a href="{% url 'menu_rtv_cup-2020' %}" class="btn btn-info btn-light" role="button" title="Ir a otro mes">Cambiar</a>
+    <a href="{% url 't_anual' %}" class="btn btn-info btn-light" role="button" title="Ver año completo">Total anual</a>
 </div>
-
+<br><br><br>
 {% endblock content %}

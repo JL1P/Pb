@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!--body-->
+{% block content %}
+
+<div class='container'>
+    <h1 style="color: aliceblue; text-align: center;">Ingrese los campos</h1>
+    <form action="" method="post" autocomplete novalidate>{% csrf_token %}
+        <table style='color:aliceblue'>
+            {{form.as_table}}
+        </table>
+        <br>
+        <input type="submit" class='btn btn-info btn-light' value='Agregar'>
+        <a href="{% url 'rel_trgtas_vendidas_cup' mes_menu=mes_a %}" class="btn btn-info btn-dark" style="margin-left: 10px;" role="button">Atrás</a>
+    </form>
+    <br><br>
+    {% if alert %}
+        <div class="alert alert-success alert-dismissible fade show" id="myAlert">
+            <strong>Hecho!</strong>
+        </div>
+        
+    {% endif %}
+</div>
+
+<script>
+//Funcion para ocultar la alerta
+function createAutoClosingAlert(selector, delay) {
+    var alert = $(selector).alert();
+    window.setTimeout(function() { alert.alert('close') }, delay);
+ }
+ createAutoClosingAlert("#myAlert", 2000);
+</script>
+{% endblock content %}

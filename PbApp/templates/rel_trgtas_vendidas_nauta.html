@@ -3,6 +3,60 @@
 
 <!--body-->
 {% block content %}
-
+<style>
+    header, section, footer, aside, nav, article, figure, figcaption, hgroup{
+  display: block;
+}
+</style>
+<div class="container">
+    <h1 style="color: aliceblue; text-align: center;">{{month}}-NAUTA</h1>
+    {% if result %}
+    <table class="table table-light table-hover table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Fecha</th>
+                <th>Cant.</th>
+                <th>Valor Facial</th>
+                <th>Valor Etecsa</th>
+                <th>Ingreso AG-CUC</th>
+                <th>Ingreso AG-CUP</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for x in result %}
+        <tr>
+            <td>{{x.fecha}}</td>
+            <td><strong>II</strong>:{{x.cant_dos}} <strong>V</strong>:{{x.cant_c}} <strong>X:</strong>{{x.cant_d}}</td>
+            <td>{{x.valor_facial}}</td>
+            <td>{{x.valor_etecsa}}</td>
+            <td>{{x.ingreso_ag_cuc}}</td>
+            <td>{{x.ingreso_ag_cup}}</td>
+        </tr>
+        {% endfor %}                
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Total</th>
+        {% for x in tresult %}
+                <th><strong>II</strong>:{{x.tcant_dos}} <strong>V</strong>:{{x.tcant_c}} <strong>X:</strong>{{x.tcant_d}}</th>
+                <th>{{x.tvalor_facial}}</th>
+                <th>{{x.tvalor_etecsa}}</th>
+                <th>{{x.tingreso_ag_cuc}}</th>
+                <th>{{x.tingreso_ag_cup}}</th>
+            </tr>
+        {% endfor %}
+        </tfoot>
+    </table>
+    
+    {% else %}
+        <p style="color: aliceblue">No hay datos de este mes</p>
+    {% endif %}
+</div>
+<div class="d-flex justify-content-around">
+    <a href="{% url 'insert_rtc_nauta' %}" class="btn btn-info btn-light" role="button" title="Insertar nuevos datos">Insertar</a>
+    <a href="{% url 'menu_rtv_nauta-2020' %}" class="btn btn-info btn-light" role="button" title="Ir a otro mes">Cambiar</a>
+    <a href="{% url 't_anual_nauta' %}" class="btn btn-info btn-light" role="button" title="Ver año completo">Total anual</a>
+</div>
+<br><br><br>
 
 {% endblock content %}

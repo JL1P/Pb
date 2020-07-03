@@ -1,11 +1,22 @@
 from django import forms
-from django.forms.widgets import SelectDateWidget
+from django.forms.widgets import SelectDateWidget, Select
+from PbApp.models import trtv_cup
 
-class form_insert_cup(forms.Form):
+class form_insert_cup_movil(forms.Form):
 
     fecha=forms.DateField(widget=SelectDateWidget())
-    cant=forms.IntegerField()
-    valor_facial=forms.FloatField()
-    valor_etecsa=forms.FloatField()
-    ingreso_ag=forms.FloatField()
-    
+    cant_5=forms.IntegerField(required=None)
+    cant_10=forms.IntegerField(required=None)
+    cant_20=forms.IntegerField(required=None)
+
+class form_insert_nauta(forms.Form):
+
+    fecha=forms.DateField(widget=SelectDateWidget())
+    cant_2=forms.IntegerField(required=None)
+    cant_5=forms.IntegerField(required=None)
+    cant_10=forms.IntegerField(required=None)
+
+class form_rango_meses(forms.Form):
+
+    mes_de_inicio=forms.ModelChoiceField(queryset=trtv_cup.objects.all())
+    mes_final=forms.ModelChoiceField(queryset=trtv_cup.objects.all())
