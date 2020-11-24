@@ -7,6 +7,11 @@
   .card{
     display: inline-block;
   }
+div.card {
+  width: 250px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8), 0 6px 20px 0 rgba(0, 0, 0, 1);
+  text-align: center;
+}
 </style>
 <div class="container mx-auto">
   <div id="1" class="card" style="width: 240px; margin: 15px">
@@ -51,42 +56,42 @@
       <a href="{% url tmpl mes_menu=6 %}" class="btn btn-primary stretched-link">Ir</a>
     </div>
   </div>
- <div id="7" class="card invisible" style="width: 240px; margin: 15px">
+ <div id="7" class="card" style="width: 240px; margin: 15px">
     <img class="card-img-top" src="{% static 'img/cards/julio.jpg' %}" alt="Card image" style="width:100%">
     <div class="card-body">
       <h4 class="card-title">Julio</h4>
       <a href="{% url tmpl mes_menu=7 %}" class="btn btn-primary stretched-link">Ir</a>
     </div>
   </div>
- <div id=8 class="card invisible" style="width: 240px; margin: 15px">
+ <div id=8 class="card" style="width: 240px; margin: 15px">
     <img class="card-img-top" src="{% static 'img/cards/agosto.jpg' %}" alt="Card image" style="width:100%">
     <div class="card-body">
       <h4 class="card-title">Agosto</h4>
       <a href="{% url tmpl mes_menu=8 %}" class="btn btn-primary stretched-link">Ir</a>
     </div>
   </div>
- <div id="9" class="card invisible" style="width: 240px; margin: 15px">
+ <div id="9" class="card" style="width: 240px; margin: 15px">
     <img class="card-img-top" src="{% static 'img/cards/septiembre.jpg' %}" alt="Card image" style="width:100%">
     <div class="card-body">
       <h4 class="card-title">Septiembre</h4>
       <a href="{% url tmpl mes_menu=9 %}" class="btn btn-primary stretched-link">Ir</a>
     </div>
   </div>
- <div id="10" class="card invisible" style="width: 240px; margin: 15px">
+ <div id="10" class="card" style="width: 240px; margin: 15px">
     <img class="card-img-top" src="{% static 'img/cards/octubre.jpg' %}" alt="Card image" style="width:100%">
     <div class="card-body">
       <h4 class="card-title">Octubre</h4>
       <a href="{% url tmpl mes_menu=10 %}" class="btn btn-primary stretched-link">Ir</a>
     </div>
   </div>
- <div id="11" class="card invisible" style="width: 240px; margin: 15px">
+ <div id="11" class="card" style="width: 240px; margin: 15px">
     <img class="card-img-top" src="{% static 'img/cards/noviembre.jpg' %}" alt="Card image" style="width:100%">
     <div class="card-body">
       <h4 class="card-title">Noviembre</h4>
       <a href="{% url tmpl mes_menu=11 %}" class="btn btn-primary stretched-link">Ir</a>
     </div>
   </div>
- <div id="12" class="card invisible" style="width:240px; margin: 15px">
+ <div id="12" class="card" style="width:240px; margin: 15px">
     <img class="card-img-top" src="{% static 'img/cards/diciembre.jpg' %}" alt="Card image" style="width:100%">
     <div class="card-body">
       <h4 class="card-title">Diciembre</h4>
@@ -95,4 +100,18 @@
   </div>
 </div>
 
+<script>
+  function visible(){
+    var m=new Date().getMonth()+1;
+    var i;
+    for(i=1; i<13; i++){
+      if (m < i) {
+        document.getElementById(i).style.visibility='hidden';
+      }else{
+        document.getElementById(i).style.visibility='visible';
+      }
+    }
+  }
+  visible();
+</script>
 {% endblock content %}

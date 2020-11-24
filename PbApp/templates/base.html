@@ -57,18 +57,14 @@
             <li class="nav-item dropdown">
                 <a style="color: aliceblue;" class="nav-link dropdown-toggle" data-toggle='dropdown' href="{% url 'rel_trgtas_vendidas' %}">RELACION DE TARJETAS VENDIDAS</a>
                 <div class="dropdown-menu dropdown-menu-right" style="background-color: rgba(52, 58, 64, 0.9);">
-                    <a style="color: aliceblue;" class="dropdown-item" href="{% url 'rel_trgtas_vendidas_cup' mes_menu=mes_c %}">CUP</a>
+                    <a style="color: aliceblue;" class="dropdown-item" href="{% url 'rel_trgtas_vendidas_cup' mes_menu=mes_c %}">T.PROPIAS</a>
                     <a style="color: aliceblue;" class="dropdown-item" href="{% url 'rel_trgtas_vendidas_nauta' mes_menu=mes_c %}">NAUTA</a>
                     <a style="color: aliceblue;" class="dropdown-item" href="{% url 'rel_trgtas_vendidas_movil' mes_menu=mes_c %}">MÓVIL</a>
                     <a style="color: aliceblue;" class="dropdown-item" href="{% url 'trgtas_total_anual' mes_menu=mes_c %}">TOTAL ANUAL</a>
                 </div>
             </li>
-            <li class="nav-item dropdown">
-                <a style="color: aliceblue;" class="nav-link dropdown-toggle" data-toggle='dropdown' href="{% url 'facturaciones' %}">FACTURACIONES</a>
-                <div class='dropdown-menu dropdown-menu-right' style="background-color:  rgba(52, 58, 64, 0.9);">
-                    <a style="color: aliceblue;" class='dropdown-item' href="{% url 'facturaciones_cup' %}">CUP</a>
-                    <a style="color: aliceblue;" class='dropdown-item' href="{% url 'facturaciones_cuc' %}">CUC</a>
-                </div>
+            <li class="nav-item">
+                <a style="color: aliceblue;" class="nav-link" href="{% url 'facturaciones' mes_menu=mes_c %}">FACTURACIONES</a>
             </li>
             <li class="nav-item dropdown">
                 <a style="color: aliceblue;" class="nav-link dropdown-toggle" data-toggle="dropdown" href="{% url 'extras' %}">EXTRAS</a>

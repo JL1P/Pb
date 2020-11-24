@@ -21,6 +21,11 @@
         </div>
         
     {% endif %}
+    {% if err %}
+        <div class='alert alert-danger alert-dismissible fade show' id="error">
+            <strong>Fecha incorrecta, seleccione una fecha actual o pasada!</strong>
+        </div>
+    {% endif %}
 </div>
 
 <script>
@@ -30,5 +35,6 @@ function createAutoClosingAlert(selector, delay) {
     window.setTimeout(function() { alert.alert('close') }, delay);
  }
  createAutoClosingAlert("#myAlert", 2000);
+ createAutoClosingAlert("#error", 3000);
 </script>
 {% endblock content %}

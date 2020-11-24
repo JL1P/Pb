@@ -18,5 +18,9 @@ class form_insert_nauta(forms.Form):
 
 class form_rango_meses(forms.Form):
 
-    mes_de_inicio=forms.ModelChoiceField(queryset=trtv_cup.objects.all())
+    mes_de_inicio=forms.ModelChoiceField(trtv_cup.objects.all())
     mes_final=forms.ModelChoiceField(queryset=trtv_cup.objects.all())
+
+class form_insert_fact(forms.Form):
+    fecha=forms.DateField(widget=SelectDateWidget())
+    factura=forms.FloatField()

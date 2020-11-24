@@ -3,6 +3,7 @@
 
 <!--body-->
 {% block content %}
+
 <div class="container">
     <h4 style="color: aliceblue; text-align: center;">{{year}}</h4>
     {% if result %}
@@ -17,43 +18,83 @@
             </tr>
         </thead>
         <tbody>
-        {% for x in result %}
-        <tr>
-            <td>{{x.mes}}</td>
-            <td><strong>V</strong>:{{x.tcant_c}} <strong>X</strong>:{{x.tcant_d}} <strong>XX:</strong>{{x.tcant_v}}</td>
-            <td>{{x.tvalor_facial}}</td>
-            <td>{{x.tvalor_etecsa}}</td>
-            <td>{{x.tingreso_ag}}</td>
-        </tr>
-        {% endfor %}                
+        {% if rdefault %}
+            {% for x in result %}
+                <tr>
+                    <td>{{x.mes}}</td>
+                    <td><strong>V</strong>:{{x.tcant_c}} <strong>X</strong>:{{x.tcant_d}} <strong>XX:</strong>{{x.tcant_v}}</td>
+                    <td>{{x.tvalor_facial}}</td>
+                    <td>{{x.tvalor_etecsa}}</td>
+                    <td>{{x.tingreso_ag}}</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            {% for x in res_filtrados %}
+                <tr>
+                    <td>{{x.mes}}</td>
+                    <td><strong>V</strong>:{{x.tcant_c}} <strong>X</strong>:{{x.tcant_d}} <strong>XX:</strong>{{x.tcant_v}}</td>
+                    <td>{{x.tvalor_facial}}</td>
+                    <td>{{x.tvalor_etecsa}}</td>
+                    <td>{{x.tingreso_ag}}</td>
+                </tr>
+            {% endfor %}
+        {% endif %}              
         </tbody>
-        <tfoot>
-            <tr>
-                <th>Total</th>
-        {% for x in tresultados %}
-                <th><strong>V</strong>:{{x.cant_c}} <strong>X</strong>:{{x.cant_d}} <strong>XX:</strong>{{x.cant_v}}</th>
-                <th>{{x.valor_facial}}</th>
-                <th>{{x.valor_etecsa}}</th>
-                <th>{{x.ingreso_ag}}</th>
-            </tr>
-        {% endfor %}
-        </tfoot>
+        {% if rdefault %}
+            {% for x in tresultados %}
+                <tfoot>
+                    <tr>
+                        <th>Total</th>
+                        <th><strong>V</strong>:{{x.cant_c}} <strong>X</strong>:{{x.cant_d}} <strong>XX:</strong>{{x.cant_v}}</th>
+                        <th>{{x.valor_facial}}</th>
+                        <th>{{x.valor_etecsa}}</th>
+                        <th>{{x.ingreso_ag}}</th>
+                    </tr>
+                </tfoot>
+            {% endfor %}
+        {% else %}
+            <tfoot>
+                <tr>
+                    <th>Total</th>
+                    <th><strong>V</strong>:{{tc}} <strong>X</strong>:{{td}} <strong>XX:</strong>{{tv}}</th>
+                    <th>{{tvf}}</th>
+                    <th>{{tve}}</th>
+                    <th>{{tiag}}</th>
+                </tr>
+            </tfoot>
+        {% endif %}
     </table>
     
-    {% else %}
-        <p style="color: aliceblue">Aún no hay estadísticas de este año</p>
-    {% endif %}
     
 </div>
+
+{% if erango %}
+    <div style="text-align: center;" class="alert alert-danger alert-dismissible fade show" id="myAlert">
+        <h5><strong>Error en el rango!</strong></h5>
+    </div>
+{% endif %}
+
 <div class="container">
     <a href="{% url 'rel_trgtas_vendidas_cup' mes_menu=mes_c %}" class="btn btn-info btn-light float-right" role="button">Atrás</a>
     <h4 style="color: aliceblue;">Seleccione rango</h4>
     <form action="" method="post" style="width: 17%;">{% csrf_token %}
-        <table>
+        <table style='color: aliceblue'>
             {{form.as_table}}
         </table>
         <br>
-        <input type="submit" value='aplicar'>
-    </form>
+        <input type="submit" value='Aplicar'>
+    </form><br>
 </div>
+
+<script>
+//Funcion para notificar rango incorrecto
+function rango_incorrecto(){
+    alert('Rango incorrecto');
+}
+</script>
+
+{% else %}
+        <p style="color: aliceblue">Aún no hay estadísticas de este año</p>
+{% endif %}
+
 {% endblock content %}

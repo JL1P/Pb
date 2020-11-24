@@ -1,32 +1,23 @@
 {% extends 'base.html' %}
 {% load static %}
 
-<!--body-->
-{% block content %}
+{% block content %}     
+<!--Tabla de CUP anual-->
 <div class="container">
     <h1 style="color: aliceblue; text-align: center;">{{year}}</h1>
-    {% if result_cup %}
+    {% if tresult_cup %}
     <table class="table table-light table-hover table-striped">
         <thead class="thead-dark">
             <tr>
-                <th>Fecha</th>
+                <h3 style="color: aliceblue;">CUP</h3>
+                <th>2020</th>
                 <th>Cant.</th>
                 <th>Valor Facial</th>
                 <th>Valor Etecsa</th>
                 <th>Ingreso AG</th>
             </tr>
         </thead>
-        <tbody>
-        {% for x in result_cup %}
-        <tr>
-            <td>{{x.mes}}</td>
-            <td><strong>V</strong>:{{x.tcant_c}} <strong>X</strong>:{{x.tcant_d}} <strong>XX:</strong>{{x.tcant_v}}</td>
-            <td>{{x.tvalor_facial}}</td>
-            <td>{{x.tvalor_etecsa}}</td>
-            <td>{{x.tingreso_ag}}</td>
-        </tr>
-        {% endfor %}                
-        </tbody>
+
         <tfoot>
             <tr>
                 <th>Total</th>
@@ -41,11 +32,100 @@
     </table>
     
     {% else %}
-        <p style="color: aliceblue">Aún no hay estadísticas de este año</p>
+        <p style="color: aliceblue">Aún no hay estadísticas de este año para CUP</p>
     {% endif %}
+    
+</div>
+<div class="container">
+    {% if tresult_nauta %}
+    <table class="table table-light table-hover table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <h3 style="color: aliceblue;">NAUTA</h3>
+                <th>2020</th>
+                <th>Cant.</th>
+                <th>Valor Facial</th>
+                <th>Valor Etecsa</th>
+                <th>Ingreso AG-CUP</th>
+            </tr>
+        </thead>
+
+        <tfoot>
+            <tr>
+                <th>Total</th>
+        {% for x in tresult_nauta %}
+                <th><strong>II</strong>:{{x.cant_dos}} <strong>V</strong>:{{x.cant_c}} <strong>X:</strong>{{x.cant_d}}</th>
+                <th>{{x.valor_facial}}</th>
+                <th>{{x.valor_etecsa}}</th>
+                <th>{{x.ingreso_ag_cup}}</th>
+            </tr>
+        {% endfor %}
+        </tfoot>
+    </table>
+    
+    {% else %}
+        <p style="color: aliceblue">Aún no hay estadísticas de este año para Nauta</p>
+    {% endif %}
+    
+</div>
+<div class="container">
+    {% if tresult_movil %}
+    <table class="table table-light table-hover table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <h3 style="color: aliceblue;">MOVIL</h3>
+                <th>2020</th>
+                <th>Cant.</th>
+                <th>Valor Facial</th>
+                <th>Valor Etecsa</th>
+                <th>Ingreso AG-CUP</th>
+            </tr>
+        </thead>
+
+        <tfoot>
+            <tr>
+                <th>Total</th>
+        {% for x in tresult_movil %}
+                <th><strong>V</strong>:{{x.cant_c}} <strong>X</strong>:{{x.cant_d}} <strong>XX:</strong>{{x.cant_v}}</th>
+                <th>{{x.valor_facial}}</th>
+                <th>{{x.valor_etecsa}}</th>
+                <th>{{x.ingreso_ag_cup}}</th>
+            </tr>
+        {% endfor %}
+        </tfoot>
+    </table>
+    
+    {% else %}
+        <p style="color: aliceblue">Aún no hay estadísticas de este año para Móvil</p>
+    {% endif %}
+    
+</div>
+
+<div class="container">
+    <table class="table table-light table-hover table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <h3 style="color: aliceblue;">TOTAL</h3>
+                <th>{{year}}</th>
+                <th>Valor Facial</th>
+                <th>Valor Etecsa</th>
+                <th>Ingreso AG-CUP</th>
+            </tr>
+        </thead>
+
+        <tfoot>
+            <tr>
+                <th>Total</th>
+                <th>{{t3_vf}}</th>
+                <th>{{t3_ve}}</th>
+                <th>{{t3_icup}}</th>
+            </tr>
+        </tfoot>
+    </table>    
     
 </div>
 <div style='text-align:center'>
     <a href="{% url 'rel_trgtas_vendidas_cup' mes_menu=mes_c %}" class="btn btn-info btn-light" role="button">Atrás</a>
 </div>
+<br>
 {% endblock content %}

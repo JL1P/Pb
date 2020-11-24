@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!--body-->
+{% block content %}
+<div class="container" style="width: 50%;" >
+    <h4 style="color: aliceblue; text-align: center;">{{year}}</h4>
+    {% if result %}
+    <table class="table table-light table-hover table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Fecha</th>
+                <th>Factura</th>
+                <th>Comisión</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% if rdefault %}
+            {% for x in result %}
+            <tr>
+                <td>{{x.mes}}</td>
+                <td>{{x.tfactura}}
+                <td>{{x.tcomision}}</td>
+            </tr>
+            {% endfor %} 
+        {% else %}
+            {% for x in res_filtrados %}
+                <tr>
+                    <td>{{x.mes}}</td>
+                    <td>{{x.tfactura}}</td>
+                    <td>{{x.tcomision}}</td>
+                </tr>
+            {% endfor %}
+        {% endif %}               
+        </tbody>
+        {% if rdefault %}
+            {% for x in tresultados %}
+                <tfoot>
+                    <tr>
+                        <th>Total</th>
+                        <th>{{x.factura}}</th>
+                        <th>{{x.comision}}</th>
+                    </tr>
+                </tfoot>
+            {% endfor %}
+        {% else %}
+            <tfoot>
+                <tr>
+                    <th>Total</th>
+                    <th>{{tf}}</th>
+                    <th>{{tc}}</th>
+                </tr>
+            </tfoot>
+        {% endif %}
+    </table>
+    
+</div>
+
+{% if erango %}
+    <div style="text-align: center;" class="alert alert-danger alert-dismissible fade show" id="myAlert">
+        <strong>Error en el rango!</strong>
+    </div>
+{% endif %}
+
+<div class='container'>
+    <a href="{% url 'rel_trgtas_vendidas_nauta' mes_menu=mes_c %}" class="btn btn-info btn-light float-right" role="button">Atrás</a>
+    <h4 style="color: aliceblue;">Seleccione rango</h4>
+    <form action="" method="post" style="width: 17%;">{% csrf_token %}
+        <table style='color: aliceblue'>
+            {{form.as_table}}
+        </table>
+        <br>
+        <input type="submit" value='Aplicar'>
+    </form><br>
+</div>
+
+{% else %}
+    <p style="color: aliceblue">Aún no hay estadísticas de este año</p>
+{% endif %}
+
+{% endblock content %}
