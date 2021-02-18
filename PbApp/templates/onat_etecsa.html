@@ -12,7 +12,7 @@
     <table class="table table-hover table-light">
         <thead class="thead">
             <tr>
-                <th>Total ingreso</th>
+                <th>Total Ingresos</th>
                 <th>Impuesto segun ingresos</th>
                 <th>Fza Trab y S.Social</th>
                 <th>Pagar en la ONAT</th>
@@ -20,14 +20,24 @@
                 <th>Diferencia</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody style="text-align: center;">
             <tr>
-                <td></td>
+                <td>{{ t_i|floatformat:2 }}</td>
+                <td>{{ imp|floatformat:2 }}</td>
+                <td>{{ fza_trab |floatformat:2 }}</td>
+                <td>{{ pago_onat|floatformat:2 }}</td>
+                <td>{{ pagado|floatformat:2 }}</td>
+                <td>{{ diferencia|floatformat:2 }}</td>
             </tr>
         </tbody>
     </table>
+<a href="{% url 'menu_onat' %}" class="btn btn-info btn-light" role="button" title="Ir a otro mes">Cambiar</a>
+<a style="margin-left: 5%;" href="{% url 't_anual_onat' %}" class="btn btn-info btn-light" role="button" title="Ver año completo">Total anual</a>
+<a style="margin-left: 5%;" href="{% url 'insert_pago_onat' %}" class="btn btn-info btn-light float-right" role="button" title="Insertar pago Onat">Insertar pago Onat</a>
+<a style="margin-left: 5%;" href="{% url 'onat_etecsa' mes_menu=mes_c limp_reg=2 %}" class="btn btn-info btn-light float-right" role="button"
+     title="Limpiar registros de pago a la ONAT">Limpiar registros</a>
+     
 </div>
-
 <div class="float-right" style="margin-right: 5%; width: 20%;">
 <table class="table table-hover table-light">
     <thead class="thead">
@@ -36,28 +46,32 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
+        <tr id="3">
             <td>2501.00-5000.00</td>
             <td>3%</td>
         </tr>
-        <tr>
+        <tr id="5">
             <td>5000.00-7000.00</td>
             <td>5%</td>
         </tr>
-        <tr>
+        <tr id="10">
             <td>7000.00-9000.00</td>
             <td>10%</td>
         </tr>
-        <tr>
+        <tr id="15">
             <td>9000.00-17000.00</td>
             <td>15%</td>
         </tr>
-        <tr>
+        <tr id="20">
             <td>+17000.00</td>
             <td>20%</td>
         </tr>
     </tbody>
 </table>
 </div>
+
+<script>
+    document.getElementById( {{p}} ).style.backgroundColor = 'gray'
+</script>
 
 {% endblock content %}

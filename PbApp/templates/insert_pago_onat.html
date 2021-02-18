@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!--body-->
+{% block content %}
+
+<div class='container'>
+    <h1 style="color: aliceblue; text-align: center;">Ingrese cuanto pagó a la ONAT</h1><br><br>
+    <form action="" method="post" autocomplete novalidate>{% csrf_token %}
+        <table style='color:aliceblue'>
+            {{form.as_table}}
+        </table>
+        <br>
+        <input type="submit" class='btn btn-info btn-light' value='Agregar'>
+        <a href="{% url 'onat_etecsa' mes_menu=mes_a %}" class="btn btn-info btn-dark" style="margin-left: 10px;" role="button">Atrás</a>
+    </form>
+    <br><br>
+    {% if alert %}
+        <div class="alert alert-success alert-dismissible fade show" id="myAlert">
+            <strong>Hecho!</strong>
+        </div>
+    {% endif %}
+    {% if err %}
+        <div class='alert alert-danger alert-dismissible fade show' id="error">
+            <strong>Fecha incorrecta, seleccione una fecha actual o pasada!</strong>
+        </div>
+    {% endif %}
+</div>
+
+<script>
+//Funcion para ocultar la alerta
+function createAutoClosingAlert(selector, delay) {
+    var alert = $(selector).alert();
+    window.setTimeout(function() { alert.alert('close') }, delay);
+ }
+ createAutoClosingAlert("#myAlert", 2000);
+ createAutoClosingAlert("#error", 3000);
+</script>
+
+{% endblock content %}

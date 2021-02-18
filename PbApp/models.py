@@ -1,4 +1,7 @@
 from django.db import models
+import datetime
+
+today = datetime.datetime.now
 
 MESES=[('Enero', 'Enero'), ('Febrero', 'Febrero'), ('Marzo','Marzo'), ('Abril', 'Abril'), ('Mayo', 'Mayo'), 
     ('Junio', 'Junio'), ('Julio', 'Julio'), ('Agosto', 'Agosto'), ('Septiembre', 'Septiembre'), 
@@ -49,6 +52,10 @@ class rtv_nauta(models.Model):
     ingreso_ag_cup=models.FloatField(verbose_name='Ingreso A.G-CUP')    
 
 class trtv_nauta(models.Model):
+    
+    def __str__(self):
+        return self.mes
+    
     fecha=models.DateField()
     tcant_dos=models.IntegerField(verbose_name='Total: Cantidad de 2')
     tcant_c=models.IntegerField(verbose_name='Total: Cantidad de 5')
@@ -77,6 +84,10 @@ class rtv_movil(models.Model):
     ingreso_ag_cup=models.FloatField(verbose_name='Ingreso A.G-CUP')
 
 class trtv_movil(models.Model):
+    
+    def __str__(self):
+        return self.mes
+
     fecha=models.DateField()
     tcant_c=models.IntegerField(verbose_name='Total: Cantidad de 5')
     tcant_d=models.IntegerField(verbose_name='Total: Cantidad de 10')
@@ -106,6 +117,10 @@ class facturaciones(models.Model):
     comision=models.FloatField(verbose_name='Comisión')
 
 class t_facturaciones(models.Model):
+
+    def __str__(self):
+        return self.mes
+
     fecha=models.DateField()
     tfactura=models.FloatField(verbose_name='Total de Factura')
     tcomision=models.FloatField(verbose_name='Total de Comisión')
@@ -118,15 +133,11 @@ class t_anual_facturaciones(models.Model):
 
 class onat_etecsa(models.Model):
     fecha=models.DateField()
-    total_ingreso=models.FloatField(verbose_name='Total Ingreso')
-    imp_seg_ingreso=models.FloatField(verbose_name='Impuesto segun ingreso')
-    ft_ssocial=models.FloatField(verbose_name='Fuerza de Trabajo y Seguridad Social')
-    pagar_en_onat=models.FloatField(verbose_name='Pagar en la Onat')
-    pagado_en_onat=models.FloatField(verbose_name='Pagado en la Onat')
-    diferencia=models.FloatField(verbose_name='Diferencia')
-    mes=models.CharField(max_length=50, default='')
+    pagar_en_onat=models.FloatField(verbose_name='Pagar en la Onat', null = True, blank=True)
+    pagado_en_onat=models.FloatField(verbose_name='Pagado en la Onat', null = True, blank=True)
 
 class t_onat_etecsa(models.Model):
+    fecha=models.DateField(default = today)
     t_ingreso=models.FloatField(verbose_name='Total Ingreso')
     imp_seg_ingreso=models.FloatField(verbose_name='Impuesto segun ingreso')
     ft_ssocial=models.FloatField(verbose_name='Fuerza de Trabajo y Seguridad Social')

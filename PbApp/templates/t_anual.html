@@ -69,9 +69,7 @@
 </div>
 
 {% if erango %}
-    <div style="text-align: center;" class="alert alert-danger alert-dismissible fade show" id="myAlert">
-        <h5><strong>Error en el rango!</strong></h5>
-    </div>
+    <script>alert('Error en el rango de meses escogidos')</script>
 {% endif %}
 
 <div class="container">
@@ -85,13 +83,6 @@
         <input type="submit" value='Aplicar'>
     </form><br>
 </div>
-
-<script>
-//Funcion para notificar rango incorrecto
-function rango_incorrecto(){
-    alert('Rango incorrecto');
-}
-</script>
 
 {% else %}
         <p style="color: aliceblue">Aún no hay estadísticas de este año</p>
